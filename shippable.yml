@@ -1,0 +1,41 @@
+language: node_js
+
+node_js: 
+    - 0.10
+
+build_image: amurphy/node_mongo
+
+services:
+    - mongodb
+
+env:
+    - XUNIT_FILE=shippable/testresults/result.xml
+
+before_install:
+    - source ~/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
+    - node --version
+    - npm install -g grunt-cli
+    - mkdir -p shippable/testresults
+    - mkdir -p shippable/codecoverage
+
+      # Start MongoDB
+    - . startMongo.sh
+
+    # Resetting the database in before_script makes sure that the database is always empty for consistent test results.
+    - mongo test --eval 'db.dropDatabase()'
+
+install:
+    - npm install
+
+script:
+    - grunt
+
+after_script:
+    - ./node_modules/.bin/istanbul cover grunt -- -u tdd
+    - ./node_modules/.bin/istanbul report cobertura --dir  shippable/codecoverage/
+
+    # Shut down the database
+    - mongo admin --eval 'db.shutdownServer()'
+
+notifications:
+    - email: false
