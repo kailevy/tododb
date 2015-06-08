@@ -11,5 +11,5 @@ ADD . /src
 # Install app dependencies
 RUN cd /src; npm install
 
-EXPOSE  4000
+EXPOSE  4001
 CMD ["nodejs", "/src/db.js"]

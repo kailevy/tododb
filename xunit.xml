@@ -1,5 +1,5 @@
-<testsuite name="Mocha Tests" tests="3" failures="0" errors="0" skipped="0" timestamp="Mon, 08 Jun 2015 20:02:34 GMT" time="0.073">
-<testcase classname="Creation" name="sends a post request, making a new document in database" time="0.044"/>
-<testcase classname="Editing" name="sends a post request, editing a document in database" time="0.018"/>
-<testcase classname="Deletion" name="removes the oldest entry" time="0.007"/>
+<testsuite name="Mocha Tests" tests="3" failures="0" errors="0" skipped="0" timestamp="Mon, 08 Jun 2015 20:04:04 GMT" time="0.076">
+<testcase classname="Creation" name="sends a post request, making a new document in database" time="0.047"/>
+<testcase classname="Editing" name="sends a post request, editing a document in database" time="0.017"/>
+<testcase classname="Deletion" name="removes the oldest entry" time="0.008"/>
 </testsuite>
